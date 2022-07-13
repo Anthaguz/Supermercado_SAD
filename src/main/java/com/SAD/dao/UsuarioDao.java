@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.SAD.dao;
 
-/**
- *
- * @author antho
- */
-public class UsuarioDao {
+import com.SAD.domain.Usuario;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UsuarioDao extends CrudRepository<Usuario, Long> {
     
 }
