@@ -12,7 +12,7 @@ public class Producto implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long idProducto;
-    private String name;
+    private String nombre;
     private String descripcion;
     private String marca;
     private double precio;
@@ -22,8 +22,8 @@ public class Producto implements Serializable{
     public Producto(){
     }
 
-    public Producto(String name, String descripcion, String marca, double precio, long existencias, boolean activo) {
-        this.name = name;
+    public Producto(String nombre, String descripcion, String marca, double precio, long existencias, boolean activo) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
         this.precio = precio;
