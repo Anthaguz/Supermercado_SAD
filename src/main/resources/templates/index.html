@@ -4,8 +4,9 @@
         <title>Pagina Principal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="CSS/Estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/Estilos.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <header class="header">
@@ -21,8 +22,8 @@
                             </form>
                         </div>
                     </li>
-                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/informacion/informacion.html}">Informacion</a></li>
-                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/contacto/Contacto.html}">Contacto</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/informacion/informacion}">Informacion</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/contacto/contacto}">Contacto</a></li>
                     <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="fomulario.html">Carrito</a></li>
                 </ul>
             </nav>
