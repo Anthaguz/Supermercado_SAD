@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/Estilos.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <img class="imagenLogo" src="imagenes/logoSad2.png" alt="logo de el supermercado" width="100" height="90"/>
+                <a th:href="@{/}" class="nav-link logo">SAD</a>
+
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="Informacion.html">Informacion</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="Contacto.html">Contacto</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="fomulario.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="contenido">
+            <h2>Pongase en contacto con nosotros</h2>
+            <br>
+            <form action="#" method="POST">
+                <label>Nombre</label>
+                <input placeholder="Nombre" type="text" name="Nombre" value="" size="20"/>
+                <br>
+                <label>Apellidos</label>
+                <input placeholder="Apellidos" type="text" name="Apellidos" value="" size="30"/>
+                <br>
+                <label>Correo</label>
+                <input placeholder="correo@abc.com" type="email" name="correo" value="" size="15" />
+                <br>
+                <label>Comentario</label>
+                <input placeholder="Digite su comentario" type="text" name="comentario" value="" size="150" />
+                <br>
+                <input type="submit" value="Enviar" href="resultadoForm.html"/>
+            </form>
+    </body>
+    <footer id="piePagina">
+        Derechos reservados &COPY; 2022 <address style="display: inline">Universidad Fidelitas</address> <address style="display: inline">Proyecto Programacion</address>
+    </footer>
+</html>

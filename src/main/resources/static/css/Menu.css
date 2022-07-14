@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-    background-color: lightsteelblue;
+    background-color: #9BB8F2;
     height: 12%;
     position: fixed;
     top: 0;
@@ -52,7 +52,7 @@ body {
 .nav-menu-item:hover{
     background-color: navy;
     transition: 0.5s;
-    
+
 }
 .nav-menu-link{
     padding: 8px 12px;
@@ -70,15 +70,49 @@ body {
 }
 
 .contenido {
-    background-color: wheat;
+    background-color: white;
     position: fixed;
-    top: 80px;
+    top: 15%;
     bottom: 20px;
+    height: 5%;
     left: 0;
     width: 100%;
+    color: black;
     overflow: auto;
+    text-align: center;
 }
 .imagenLogo {
     filter: brightness(1.1);
     mix-blend-mode: multiply;
+}
+
+.titulo-productos{
+    background-color: white;
+    position: fixed;
+    top: 10%;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    color: black;
+    overflow: auto;
+}
+
+.search-container{
+    float: center;
+}
+
+.search-container button {
+    
+  float: center;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
 }

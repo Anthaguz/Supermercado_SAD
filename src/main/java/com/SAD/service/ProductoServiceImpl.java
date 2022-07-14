@@ -11,12 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductoServiceImpl implements ProductoService{
     
     @Autowired
-    private ProductoDao categoriaDao;
+    private ProductoDao productoDao;
 
     @Override
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activo) {
-        var lista=(List <Producto>)categoriaDao.findAll();
+        var lista=(List <Producto>)productoDao.findAll();
         
         if(activo){
             lista.removeIf(e -> !e.isActivo());
@@ -26,19 +26,19 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     @Transactional(readOnly = true)
-    public Producto getProducto(Producto categoria) {
-        return categoriaDao.findById(categoria.getIdProducto()).orElse(null);
+    public Producto getProducto(Producto producto) {
+        return productoDao.findById(producto.getIdProducto()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(Producto categoria) {
-        categoriaDao.save(categoria);
+    public void save(Producto producto) {
+        productoDao.save(producto);
     }
 
     @Override
-    public void delete(Producto categoria) {
-        categoriaDao.delete(categoria);
+    public void delete(Producto producto) {
+        productoDao.delete(producto);
     }
     
 }

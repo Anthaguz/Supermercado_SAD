@@ -7,9 +7,9 @@ public interface ProductoService  {
 
     public List<Producto> getProductos(boolean activo);
 
-    public Producto getProducto(Producto categoria);
+    public Producto getProducto(Producto producto);
 
-    public void save(Producto categoria);
+    public void save(Producto producto);
 
-    public void delete(Producto categoria);
+    public void delete(Producto producto);
 }

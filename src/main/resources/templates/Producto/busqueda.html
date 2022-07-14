@@ -10,7 +10,6 @@
     <body>
         <header class="header">
             <nav class="nav">
-                
                 <img class="imagenLogo" src="/static/imagenes/logoSad2.png" alt="logo de el supermercado" width="100" height="90" th:src="@{imagenes/logoSad2.png}"/>
                 <a th:href="@{/}" class="nav-link logo">SAD</a>
 
@@ -22,11 +21,9 @@
             </nav>
         </header>
 
-        <div class="titulo-productos">
+        <div>
             <h2>Nuestros productos</h2>
-            <br>
-            <br>
-            <div th:if="${productos != null and !productos.empty}">
+            <div th:if="${producto.nombre == producto}">
                 <table border="1">
                     <thead>
                         <tr>
@@ -37,7 +34,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr th:each="item : ${productos}">
                             <td th:text="${item.nombre}"></td>
                             <td th:text="${item.descripcion}"></td>
@@ -47,6 +43,10 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            
+            <div th:if="${producto.nombre != producto}">
+                <p>No existe ese producto </p>
             </div>
         </div>
     </body>
