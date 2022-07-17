@@ -1,14 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.SAD.controller;
 
-/**
- *
- * @author antho
- */
+import com.SAD.service.UsuarioService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+@Slf4j
+
 public class UsuarioController {
+
+    @GetMapping("/usuario/informacion")
+    public String mostrarInformacion(Model model) {
+
+        return "/usuario/informacion";
+    }
+
+    @GetMapping("/usuario/contacto")
+    public String mostrarContacto(Model model) {
+
+        return "/usuario/contacto";
+    }
 
 }

@@ -11,7 +11,7 @@ body {
 .header {
     background-color: #9BB8F2;
     height: 12%;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -31,21 +31,21 @@ body {
 
 }
 .logo{
-    font-size: 30px;
+    font-size: 200%;
     font-weight: bold;
-    padding: 0 40px;
+    padding: 0 5%;
     line-height: 12vh;
 }
 
 .nav-menu{
     display: flex;
-    margin-left: 900px;
+    margin-left: 35%;
     list-style: none;
 }
 
 .nav-menu-item{
-    font-size: 18px;
-    margin: 0 10px;
+    font-size: 100%;
+    margin: 3 10%;
     line-height: 12vh;
 }
 
