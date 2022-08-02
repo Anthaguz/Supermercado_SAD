@@ -1,5 +1,5 @@
 #encabezado {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 8%;
@@ -14,7 +14,7 @@
     font-size: 18px;
 }
 #menu {
-    position: absolute;
+    position: fixed;
     top: 8%;
     left: 0;
     height: 4%;
