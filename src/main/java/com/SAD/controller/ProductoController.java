@@ -20,5 +20,11 @@ public class ProductoController {
         var productos = productoService.getProductos(true);
         model.addAttribute("productos", productos);
         return "/producto/lista";
+    }    
+    @GetMapping("/producto/busqueda")
+    public String busqueda(Model model) {
+        var productos = productoService.getProductos(true);
+        model.addAttribute("productos", productos);
+        return "/producto/lista";
     }
 }
