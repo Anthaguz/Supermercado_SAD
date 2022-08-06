@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Pagina Principal</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{/css/Estilos.css}" rel="stylesheet" type="text/css"/>
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
-
+  <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: headerCliente"/>
-
+  <header th:replace="layout/plantilla :: header"> </header>
         <section class="contenido">
             <h2>*Ofertas*</h2>
             <h2>PREGUNTAR AL PROFE POR QUE ESA MAUREN DE EL MENU SE CAMBIA ENTRE MONITORES Y DE TAMANO</h2>

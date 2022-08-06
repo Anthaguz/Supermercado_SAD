@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>SAD</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" th:href="@{/css/estilos.css}" />
-        <link href="../static/css/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="../static/css/menu.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <head th:fragment="head">
+        <title>Plantilla</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
-        <header class="header" th:fragment="headerCliente" >
-                        <nav class="nav">
-                <img class="imagenLogo" src="../static/imagenes/logoSad2.png" alt="logo de el supermercado" width="100" height="90" th:src="@{/imagenes/logoSad2.png}"/>
-                <a th:href="@{/}" class="nav-link logo">SAD</a>
-                <ul class="nav-menu">
-                     <li class="nav-menu-item"><div class="search-container">
-                            <form action="#">
-                                <input type="text" placeholder="Search.." name="search">
-                                    <button type="submit">Submit</button> 
-                            </form>
-                        </div>
-                    </li>
-                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/usuario/informacion}">Informacion</a></li>
-                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" th:href="@{/usuario/contacto}">Contacto</a></li>
-                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="">Carrito</a></li>
-                </ul>
+        <header class="header" th:fragment="header" >
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand">SAD</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
+                            <li class="nav-item px-3">
+                                <a th:href="@{/}" class="nav-menu-link nav-link"th:text="#{plantilla.titulo}">Titulo</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/usuario/informacion}"
+                                   th:text="#{plantilla.informacion}">Informacion</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}"
+                                   th:text="#{plantilla.contacto}">Contacto</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}"
+                                   th:text="#{plantilla.carrito}">Carrito</a>
+                            </li>
+                            <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/usuario/listado}"
+                                   th:text="#{plantilla.usuarios}">Usuarios</a>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{plantilla.bienvenido}">Bievenido:</span>
+                                    <span sec:authentication="name">Usuario</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>                    
+                </div>|
             </nav>
         </header>
     </body>
