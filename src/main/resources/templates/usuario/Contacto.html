@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>Contacto</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{/css/Estilos.css}" rel="stylesheet" type="text/css"/>
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: headerCliente"/>
+        <header th:replace="layout/plantilla :: header"/>
         <section id="contenido">
             <h2>Pongase en contacto con nosotros</h2>
             <br>
@@ -28,7 +24,5 @@
                 <input type="submit" value="Enviar" th:href="resultadoForm.html"/>
             </form>
     </body>
-    <footer id="piePagina">
-        Derechos reservados &COPY; 2022 <address style="display: inline">Universidad Fidelitas</address> <address style="display: inline">Proyecto Programacion</address>
-    </footer>
+    <footer th:replace="layout/plantilla :: footer" />
 </html>

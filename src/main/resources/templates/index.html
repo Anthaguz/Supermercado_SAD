@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<html>
-  <head th:replace="layout/plantilla :: head">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
         <title>Inicio</title>
     </head>
     <body>
-  <header th:replace="layout/plantilla :: header"> </header>
+        <header th:replace="layout/plantilla :: header"> </header>
         <section class="contenido">
-            <h2>*Ofertas*</h2>
-            <h2>PREGUNTAR AL PROFE POR QUE ESA MAUREN DE EL MENU SE CAMBIA ENTRE MONITORES Y DE TAMANO</h2>
-            <br>
-            <p style='text-align: center'> <a th:href="@{/producto/lista}">Iniciar Compras</a> </p>
+            <h2>Catalogo de Productos disponibles</h2>
+            <p style='text-align: center'><a th:href="@{/producto/lista}">Agregar productos al Inventario</a></p>
         </section>
-
-
     </body>
-
-    <footer id="piePagina">
-        Derechos reservados &COPY; 2022 <address style="display: inline">Universidad Fidelitas</address> <address style="display: inline">Proyecto Programacion</address>
-    </footer>
+    <footer th:replace="layout/plantilla :: footer" />
 </html>

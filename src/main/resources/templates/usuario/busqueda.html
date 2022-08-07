@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Productos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{/css/Estilos.css}" rel="stylesheet" type="text/css"/>
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
+        <title>Busqueda</title>
     </head>
     <body>
         <header class="header">
@@ -44,13 +40,11 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <div th:if="${producto.nombre != producto}">
                 <p>No existe ese producto </p>
             </div>
         </div>
     </body>
-    <footer id="piePagina">
-        Derechos reservados &COPY; 2022 <address style="display: inline">Universidad Fidelitas</address> <address style="display: inline">Proyecto Programacion</address>
-    </footer>
+    <footer th:replace="layout/plantilla :: footer" />
 </html>

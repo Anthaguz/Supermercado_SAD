@@ -28,7 +28,7 @@
                                    th:text="#{plantilla.informacion}">Informacion</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}"
+                                <a class="nav-menu-link nav-link" th:href="@{/usuario/contacto}"
                                    th:text="#{plantilla.contacto}">Contacto</a>
                             </li>
                             <li class="nav-item px-2">
@@ -60,5 +60,16 @@
                 </div>|
             </nav>
         </header>
+        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                        &COPY [[#{plantilla.derechos}]]
+                        <a th:href="@{/(lang=es)}">ES</a> | 
+                        <a th:href="@{/(lang=en)}">EN</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
