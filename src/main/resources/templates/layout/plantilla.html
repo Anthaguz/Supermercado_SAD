@@ -12,46 +12,46 @@
     </head>
     <body>
         <header class="header" th:fragment="header" >
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+            <nav class="navbar navbar-expand-sm navbar-dark p-0 bg-info">
                 <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">SAD</a>
+                    <a th:href="@{/}" class="navbar-brand text-white">SAD</a>
                     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
                             <li class="nav-item px-3">
-                                <a th:href="@{/}" class="nav-menu-link nav-link"th:text="#{plantilla.titulo}">Titulo</a>
+                                <a th:href="@{/}" class="nav-menu-link nav-link text-white"th:text="#{plantilla.titulo}">Titulo</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/usuario/informacion}"
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/usuario/informacion}"
                                    th:text="#{plantilla.informacion}">Informacion</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/usuario/contacto}"
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/usuario/contacto}"
                                    th:text="#{plantilla.contacto}">Contacto</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/producto/lista}"
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/producto/lista}"
                                    th:text="#{plantilla.carrito}">Carrito</a>
                             </li>
-                            <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
-                                <a class="nav-menu-link nav-link" th:href="@{/usuario/listado}"
+                            <li class="nav-item px-2 text-white"  sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/usuario/listado}"
                                    th:text="#{plantilla.usuarios}">Usuarios</a>
                             </li>
                         </ul>
-                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto text-white">
                             <li class="nav-item mr-3">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-user"></i>
+                                <a href="#" class="nav-link text-white">
+                                    <i class="fas fa-user text-white"></i>
                                     <span th:text="#{plantilla.bienvenido}">Bievenido:</span>
                                     <span sec:authentication="name">Usuario</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item text-white">
                                 <form method="POST" th:action="@{/logout}">
-                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
-                                        <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link text-white">
+                                        <i class="fas fa-user-times text-white"></i> [[#{plantilla.logout}]]
                                     </a>
                                 </form>
                             </li>
