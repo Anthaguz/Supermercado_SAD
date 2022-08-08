@@ -6,23 +6,26 @@
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <section id="contenido">
-            <h2>Pongase en contacto con nosotros</h2>
+            <h2 class="text-center">Pongase en contacto con nosotros</h2>
             <br>
-            <form action="#" method="POST">
-                <label>Nombre</label>
-                <input placeholder="Nombre" type="text" name="Nombre" value="" size="20"/>
+            <form>
+                <div class="form-floating mb-3 text-center container">
+                    <input type="email" class="form-control container" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Correo Electronico</label>
+                    <div id="email" class="form-text text-center">Su informacion solo sera usada exclusivamente para contactarlo y no sera compartida con terceros</div>
+                </div>
+                <div class="form-floating mb-3 text-center container-md">
+                    <input type="Nombre" class="form-control container-md" id="floatingInput" placeholder="Jhon Doe">
+                    <label for="floatingInput">Nombre y Apellidos</label>
+                </div>
+                <div class="form-floating container-md">
+                    <textarea class="form-control container-md" placeholder="Deje sus comentarios aca" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Comentarios</label>
+                </div>
                 <br>
-                <label>Apellidos</label>
-                <input placeholder="Apellidos" type="text" name="Apellidos" value="" size="30"/>
-                <br>
-                <label>Correo</label>
-                <input placeholder="correo@abc.com" type="email" name="correo" value="" size="15" />
-                <br>
-                <label>Comentario</label>
-                <input placeholder="Digite su comentario" type="text" name="comentario" value="" size="150" />
-                <br>
-                <input type="submit" value="Enviar" th:href="resultadoForm.html"/>
+                <button type="submit" class="btn btn-primary" >Enviar</button>
             </form>
+        </section>
     </body>
     <footer th:replace="layout/plantilla :: footer" />
 </html>
