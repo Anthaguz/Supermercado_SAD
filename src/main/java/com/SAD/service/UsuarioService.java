@@ -4,10 +4,12 @@
  */
 package com.SAD.service;
 
+import org.springframework.security.core.Authentication;
+
 /**
  *
  * @author antho
  */
 public interface UsuarioService {
-    
+    public String getCurrentUser(Authentication authentication);
 }
