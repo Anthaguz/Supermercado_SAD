@@ -8,20 +8,21 @@
         <section id="contenido">
             <h2>Pongase en contacto con nosotros</h2>
             <br>
-            <form action="#" method="POST">
-                <label>Nombre</label>
-                <input placeholder="Nombre" type="text" name="Nombre" value="" size="20"/>
-                <br>
-                <label>Apellidos</label>
-                <input placeholder="Apellidos" type="text" name="Apellidos" value="" size="30"/>
-                <br>
-                <label>Correo</label>
-                <input placeholder="correo@abc.com" type="email" name="correo" value="" size="15" />
-                <br>
-                <label>Comentario</label>
-                <input placeholder="Digite su comentario" type="text" name="comentario" value="" size="150" />
-                <br>
-                <input type="submit" value="Enviar" th:href="resultadoForm.html"/>
+            <form>
+                <div class="mb-3">
+                    <label for="InputEmail" class="form-label">A cual correo lo podemos contactar?</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
     </body>
     <footer th:replace="layout/plantilla :: footer" />
