@@ -6,9 +6,10 @@
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <section id="contenido">
-            <h2 class="text-center">Pongase en contacto con nosotros</h2>
             <br>
-            <form>
+            <h2 class="text-center"> <i class="fas fa-hand-point-right"></i> Pongase en contacto con nosotros</h2>
+            <br>
+            <form th:action="@{/usuario/contacto}">
                 <div class="form-floating mb-3 text-center container">
                     <input type="email" class="form-control container" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Correo Electronico</label>
@@ -23,7 +24,25 @@
                     <label for="floatingTextarea2">Comentarios</label>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" >Enviar</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 8%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Enviar
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Mensaje enviado!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Su mensaje ha sido enviado e ignorado con exito
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" th:action="@{/usuario/contacto}">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </section>
     </body>

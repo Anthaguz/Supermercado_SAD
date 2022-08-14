@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head th:fragment="head">
-        <title>Plantilla</title>
+        <title>Supermercado SAD </title>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
@@ -14,7 +14,7 @@
         <header class="header" th:fragment="header" >
             <nav class="navbar navbar-expand-sm navbar-dark p-0 bg-info">
                 <div class="container">
-                    <a th:href="@{/}" class="navbar-brand text-white">SAD</a>
+                    <a th:href="@{/}" class="navbar-brand text-white"><i class="fas fa-store"></i> SAD</a>
                     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -38,6 +38,10 @@
                             <li class="nav-item px-2 text-white"  sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="nav-menu-link nav-link text-white" th:href="@{/usuario/listado}"
                                    th:text="#{plantilla.usuarios}">Usuarios</a>
+                            </li>
+                                <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/producto/lista}"
+                                   th:text="#{plantilla.inventario}">Inventario</a>
                             </li>
                         </ul>
                         <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto text-white">
