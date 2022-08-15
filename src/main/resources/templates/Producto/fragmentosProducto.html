@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:replace="layout/plantilla :: head">
+        <title>Supermercado SAD</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div id="contenido">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                            <button 
+                                type="button" 
+                                class="btn btn-primary btn-block" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#agregarProducto">
+                                <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section th:fragment="listaProductos" id="productos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-15">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{producto.titulo}]]</h4>
+                            </div>
+                            <div th:if="${productos != null and !productos.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th th:text="#{producto.nombre}">Nombre</th>
+                                            <th th:text="#{producto.descripcion}">Descripción</th>
+                                            <th th:text="#{producto.precio}">Precio</th>
+                                            <th th:text="#{producto.existencias}">Existencias</th>
+                                            <th th:text="#{producto.activo}">Activo</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="producto : ${productos}">
+                                            <td>[[${producto.idProducto}]]</td>
+                                            <td>[[${producto.idMarca}]]</td>
+                                            <td>[[${producto.nombre}]]</td>
+                                            <td>[[${producto.descripcion}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('¢#,##0.00').format(producto.precio)}]]</td>
+                                            <td>[[${producto.existencias}]]</td>
+                                            <td>
+                                                <div class="form-check" th:if="${producto.activo} == true">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+                                                </div>
+                                                <div class="form-check" th:if="${producto.activo} != true">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/producto/modificar/}+${producto.idProducto}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${productos == null or productos.empty}">
+                                <span th:text="#{producto.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="agregarProducto">
+            <div id="agregarProducto" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/producto/guardar}" th:object="${producto}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="idMarca" th:text="#{producto.idMarca}">ID Marca</label>
+                                    <input type="number" class="form-control" name="idMarca" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion" th:text="#{producto.descripcion}">Descripcion</label>
+                                    <input type="text" class="form-control" name="descripcion" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen" th:text="#{producto.imagen}">Imagen</label>
+                                    <input type="text" class="form-control" name="imagen">
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio" th:text="#{producto.precio}">Precio</label>
+                                    <input type="number" class="form-control" name="precio" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="existencias" th:text="#{producto.existencias}">Existencias</label>
+                                    <input type="number" class="form-control" name="existencias" required="true" step="any">
+                                </div>
+                                <div class="form-group">
+                                    <label for="activo" th:text="#{producto.activo}">Activo</label>
+                                    <input type="boolean" class="form-control" name="activo" required="true">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="editarProducto">            
+            <form method="POST"
+                  th:action="@{/producto/guardar}"
+                  th:object="${producto}"
+                  class="was-validated">
+                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <section th:replace="producto/fragmentosProducto :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="idMarca" th:text="#{producto.idMarca}">ID Marca</label>
+                                            <input type="number" class="form-control" name="idMarca" th:value="${producto.idMarca}" required="true" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
+                                            <input type="text" class="form-control" name="nombre" th:value="${producto.nombre}" required="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="descripcion" th:text="#{producto.descripcion}">Descripcion</label>
+                                            <input type="text" class="form-control" name="descripcion" th:value="${producto.descripcion}" required="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagen" th:text="#{producto.imagen}">Imagen</label>
+                                            <input type="text" class="form-control" name="imagen" th:value="${producto.imagen}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="precio" th:text="#{producto.precio}">Precio</label>
+                                            <input type="number" class="form-control" name="precio" th:value="${producto.precio}" required="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="existencias" th:text="#{producto.existencias}">Existencias</label>
+                                            <input type="number" class="form-control" name="existencias" th:value="${producto.existencias}" required="true" step="any">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="activo" th:text="#{producto.activo}">Activo</label>
+                                            <input type="boolean" class="form-control" name="activo" th:value="${producto.activo}" required="true">
+                                        </div>                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a th:href="@{/producto/lista}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        
+    </body>
+</html>

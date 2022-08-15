@@ -11,8 +11,8 @@
                 <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
                 <div class="row row-cols-3" th:if="${productos != null and !productos.empty}">
                     <div class="card" th:each="producto : ${productos}" >
-                        <!-- comment <img src="/images/equipo1.png" class="card-img-top" alt="equipo"> -->
                         <div class="card-body">
+                            <img th:src="${producto.imagen}" class="card-img-top" alt="equipo">
                             <h5 class="card-title">[[${producto.descripcion}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(producto.precio)}]]</h6>
                             <a class="card-link" th:href="@{/carrito/agregar/} + ${producto.idProducto}">[[#{producto.comprar}]]</a>
