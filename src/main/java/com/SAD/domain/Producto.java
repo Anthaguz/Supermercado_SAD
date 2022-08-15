@@ -6,11 +6,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Producto")
+@Table(name="producto")
 public class Producto implements Serializable{
+    
     private static final long serialVersionUID=1L;
+    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id_producto")
     private long idProducto;
     private long idMarca;
     private String nombre;
