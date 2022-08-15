@@ -1,18 +1,10 @@
 package com.SAD.service;
 
-import com.SAD.CarritoDeCompras.CartItemRepository;
-import com.SAD.domain.ItemCarrito;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.SAD.domain.Usuario;
+import com.SAD.domain.Carrito;
 
-@Service
-public class CarritoService {
-    @Autowired
-    private CartItemRepository cartRepo;
+public interface CarritoService {
     
-    public List<ItemCarrito> listarItemsCarrito (Usuario usuario){
-        return cartRepo.findById(usuario);
-    }
+    public Carrito getCarrito(Carrito carrito);
+    
+    public Carrito getCarritoCliente(long idCliente);
 }
