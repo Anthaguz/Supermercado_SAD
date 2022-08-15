@@ -24,7 +24,7 @@ public class CarritoDetalle implements Serializable {
     private double precio; 
     private int cantidad; 
     
-    @JoinColumn(name="id_producto", referencedColumnName = "id_producto")
+    //@JoinColumn(name="id_producto", referencedColumnName = "id_producto")
     @ManyToOne
     private Producto producto;
     
