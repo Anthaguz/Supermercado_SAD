@@ -18,6 +18,7 @@ public class Producto implements Serializable{
     private long idMarca;
     private String nombre;
     private String descripcion;    
+    private String imagen;    
     private double precio;
     private long existencias;
     private boolean activo;
