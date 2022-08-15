@@ -1,15 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.SAD.service;
 
+import com.SAD.domain.Usuario;
+import java.util.List;
 import org.springframework.security.core.Authentication;
 
-/**
- *
- * @author antho
- */
 public interface UsuarioService {
     public String getCurrentUser(Authentication authentication);
+    public List<Usuario> getUsuarios();
+    public void save(Usuario usuario);
 }

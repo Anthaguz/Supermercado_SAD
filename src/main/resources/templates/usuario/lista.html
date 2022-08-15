@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layout/plantilla :: head">
+        <title>Clientes</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        </br>
+        </br>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div id="contenido">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                            <button 
+                                type="button" 
+                                class="btn btn-primary btn-block" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#agregarCliente">
+                                <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        </br>
+        </br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>[[#{cliente.titulo}]]</h4>
+                        </div>
+                        <div th:if="${clientes != null and !clientes.empty}">
+                            <table class="table table-stryped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Username</th>
+                                        <th th:text="#{cliente.nombre}"></th>
+                                        <th th:text="#{cliente.apellido}"></th>
+                                        <th>Correo</th>
+                                        <th>Direccion</th>
+                                        <th>Telefono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="cliente : ${clientes}">
+                                        <td>[[${cliente.username}]]</td>
+                                        <td>[[${cliente.cliente.nombre}]]</td>
+                                        <td>[[${cliente.cliente.apellido}]]</td>
+                                        <td>[[${cliente.cliente.correo}]]</td>
+                                        <td>[[${cliente.cliente.direccion}]]</td>
+                                        <td>[[${cliente.cliente.telefono}]]</td>
+                                        <td>
+                                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cliente/eliminar/}+${cliente.idUsuario}"
+                                               class="btn btn-danger">
+                                                <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cliente/modificar/}+${cliente.idUsuario}"
+                                               class="btn btn-success">
+                                                <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                            <span th:text="#{cliente.no_mostrar}">Lista vacía</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section th:fragment="agregarCliente">
+        <div id="agregarCliente" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" >Agregar Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> 
+                    <form th:action="@{/cliente/guardar}" th:object="${cliente}"
+                          method="POST" class="was-validated">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nombre" th:text="#{cliente.cliente.nombre}">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido" th:text="#{cliente.cliente.apellido}">apellido</label>
+                                <input type="text" class="form-control" name="apellido" required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="correo" th:text="#{cliente.cliente.correo}">correo</label>
+                                <input type="text" class="form-control" name="correo" required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion" th:text="#{cliente.cliente.direccion}">direccion</label>
+                                <input type="text" class="form-control" name="direccion" required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono" th:text="#{cliente.cliente.telefono}">telefono</label>
+                                <input type="number" class="form-control" name="telefono" required="true" step="any">
+                            </div>
+                            <div class="form-group">
+                                <label for="username" th:text="#{cliente.username}">username</label>
+                                <input type="text" class="form-control" name="username" required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" th:text="#{cliente.password}">password</label>
+                                <input type="password" class="form-control" name="password" required="true">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </br><!-- comment -->
+    </br><!-- comment -->
+
+</body>
+<footer th:replace="layout/plantilla :: footer"/>
+</html>
