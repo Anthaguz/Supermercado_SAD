@@ -48,8 +48,8 @@ public class IndexController {
         }
         if (esCliente) {
             Usuario usuario = usuarioDao.findByUsername(user.getUsername());
-            Carrito carrito = carritoService.getCarritoCliente(usuario.getIdCliente());
-            request.getSession().setAttribute("idCliente", usuario.getIdCliente());
+            Carrito carrito = carritoService.getCarritoCliente(usuario.cliente.getIdCliente());
+            request.getSession().setAttribute("idCliente", usuario.cliente.getIdCliente());
             request.getSession().setAttribute("idCarrito", carrito.getIdCarrito());
             // Consultar los items
             List<CarritoDetalle> carritoDetalles = carritoDetalleService.getCarritoDetalles(carrito.getIdCarrito());
