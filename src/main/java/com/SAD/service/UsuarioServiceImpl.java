@@ -53,7 +53,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         usuario.idRol=rol;
         Cliente tempuser=new Cliente(usuario.nombre,usuario.apellido,usuario.correo,usuario.direccion,usuario.telefono);
         clienteDao.save(tempuser);
-        usuario.cliente=clienteDao.findByCorreo(usuario.cliente.getCorreo());
+        usuario.cliente=clienteDao.findByCorreo(usuario.correo);
         usuarioDao.save(usuario);
     }
 }

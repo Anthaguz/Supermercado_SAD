@@ -35,6 +35,7 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
+        this.direccion=direccion;
         this.telefono = telefono;
     }
 
