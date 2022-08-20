@@ -56,7 +56,11 @@ public class CarritoController {
 
     @GetMapping("/carrito/listado")
     public String listado(Model model, Producto producto, HttpSession session) {
-        Long idCarrito = (Long) session.getAttribute("idCarrito");
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        String user = usuarioService.getCurrentUser(principal);
+        Usuario user2 = usuarioDao.findByUsername(user);
+        Carrito carrito = carritoService.getCarritoCliente(user2.getIdUsuario());
+        Long idCarrito = carrito.getIdCarrito();
         List<CarritoDetalle> carritoDetalles = carritoDetalleService.getCarritoDetalles(idCarrito);
         int cantidadProductosCarrito = carritoDetalles.size();
         var montoTotal = 0;

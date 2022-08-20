@@ -25,4 +25,9 @@ public class Carrito implements Serializable {
     public Carrito(Long idCliente) {
         this.idCliente = idCliente;
     }  
+    
+    public Long getIdCarrito(){
+        return idCarrito;
+    }
+    
 }
