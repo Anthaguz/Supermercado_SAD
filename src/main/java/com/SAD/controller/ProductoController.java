@@ -2,6 +2,7 @@ package com.SAD.controller;
 
 import com.SAD.domain.Producto;
 import com.SAD.service.FacturaReportService;
+import com.SAD.service.MarcaService;
 import com.SAD.service.ProductoService;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +25,8 @@ public class ProductoController {
     private FacturaReportService facturaReportService;
     @Autowired
     private ProductoService productoService;
+    @Autowired
+    private MarcaService marcaService;
 
     @GetMapping("/producto/lista")
     public String inicio(Model model) {
@@ -40,6 +43,7 @@ public class ProductoController {
     }*/
     @GetMapping("/producto/nuevo")
     public String nuevoProducto(Producto producto, Model model) {
+        var marcas = marcaService.getMarcas();
         return "/producto/modificar";
     }
 

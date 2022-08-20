@@ -15,6 +15,8 @@ public class Producto implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_producto")
     private long idProducto;
+    @JoinColumn(name = "id_marca", referencedColumnName = "id_marca")
+    @OneToMany
     private long idMarca;
     private String nombre;
     private String descripcion;    
@@ -22,7 +24,8 @@ public class Producto implements Serializable{
     private double precio;
     private long existencias;
     private boolean activo;
-    
+    @Transient
+    private long id_marca;
     public Producto(){
     }
 
