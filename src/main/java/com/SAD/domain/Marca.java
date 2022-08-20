@@ -25,5 +25,10 @@ public class Marca implements Serializable {
 
     public Marca() {
     }
+
+    public Marca(String nombre, String proveedor) {
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+    }
     
 }

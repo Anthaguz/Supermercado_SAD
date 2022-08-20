@@ -31,6 +31,8 @@ public class ProductoController {
     @GetMapping("/producto/lista")
     public String inicio(Model model) {
         var productos = productoService.getProductos(true);
+        var marcas = marcaService.getMarcas();
+        model.addAttribute("marca", marcas);
         model.addAttribute("productos", productos);
         return "/producto/lista";
     }
@@ -44,6 +46,7 @@ public class ProductoController {
     @GetMapping("/producto/nuevo")
     public String nuevoProducto(Producto producto, Model model) {
         var marcas = marcaService.getMarcas();
+        model.addAttribute("marca", marcas);
         return "/producto/modificar";
     }
 

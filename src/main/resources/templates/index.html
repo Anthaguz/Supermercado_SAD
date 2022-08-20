@@ -12,12 +12,14 @@
                 <div class="row row-cols-3" th:if="${productos != null and !productos.empty}">
                     <div class="card" th:each="producto : ${productos}" >
                         <div class="card-body">
-                            <img th:src="${producto.imagen}" class="card-img-top" alt="equipo">
-                            <h5 class="card-title">[[${producto.descripcion}]]</h5>
+                            <img th:src="${producto.imagen}" class="card-img-top" alt="equipo" style="height: 150px; max-width:350px; min-width: 10%">
+                            <h5 class="card-title">[[${producto.nombre}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(producto.precio)}]]</h6>
+                            <p>[[${producto.descripcion}]]</p>
                             <a class="card-link" th:href="@{/carrito/agregar/} + ${producto.idProducto}">[[#{producto.comprar}]]</a>
                             <p class="card-text">[[${producto.existencias}]]</p>                        
                         </div>
+                        <div style="width: 10%; display: inline;"></div>
                     </div>                
                 </div>
                 <div th:if="${productos == null or productos.empty}"  th:text="#{producto.no_mostrar}">
