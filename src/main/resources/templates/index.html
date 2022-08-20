@@ -6,9 +6,10 @@
     <body>
         <header th:replace="layout/plantilla :: header"> </header>
         <section class="contenido">
-            <h2>Catalogo de Productos disponibles</h2>
+            <h2 class="text-center">Catalogo de Productos disponibles</h2>
+            <br>
             <div class="container">
-                <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
+                <h2 th:text="#{index.titulo}" class="text-center">Nuestros Articulos</h2>            
                 <div class="row row-cols-3" th:if="${productos != null and !productos.empty}">
                     <div class="card" th:each="producto : ${productos}" >
                         <div class="card-body">
