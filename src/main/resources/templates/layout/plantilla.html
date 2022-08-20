@@ -19,7 +19,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_USER')">
                             <li class="nav-item px-3">
                                 <a th:href="@{/}" class="nav-menu-link nav-link text-white"th:text="#{plantilla.titulo}">Titulo</a>
                             </li>
@@ -32,7 +32,7 @@
                                    th:text="#{plantilla.contacto}">Contacto</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link text-white" th:href="@{/producto/lista}"
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/carrito/listado}"
                                    th:text="#{plantilla.carrito}">Carrito</a>
                             </li>
                             <li class="nav-item px-2 text-white"  sec:authorize="hasRole('ROLE_ADMIN')">

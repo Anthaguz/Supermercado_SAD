@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -27,6 +28,9 @@ public class CarritoDetalle implements Serializable {
     @JoinColumn(name="id_producto", referencedColumnName = "id_producto")
     @ManyToOne
     private Producto producto;
+    
+    
+    
     
     public CarritoDetalle() {
     }
