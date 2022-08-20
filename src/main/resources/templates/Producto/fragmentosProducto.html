@@ -48,8 +48,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     </thead>
                                     <tbody>
                                         <tr th:each="producto : ${productos}">
-                                            <td>[[${producto.idProducto}]]</td>
-                                            <td>[[${producto.idMarca}]]</td>
                                             <td>[[${producto.nombre}]]</td>
                                             <td>[[${producto.descripcion}]]</td>
                                             <td>[[${new java.text.DecimalFormat('¢#,##0.00').format(producto.precio)}]]</td>
@@ -98,10 +96,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                               method="POST" class="was-validated">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="idMarca" th:text="#{producto.idMarca}">ID Marca</label>
-                                    <input type="number" class="form-control" name="idMarca" required="true">
-                                </div>
-                                <div class="form-group">
                                     <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" required="true">
                                 </div>
@@ -121,9 +115,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <label for="existencias" th:text="#{producto.existencias}">Existencias</label>
                                     <input type="number" class="form-control" name="existencias" required="true" step="any">
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="activo" th:text="#{producto.activo}">Activo</label>
-                                    <input type="boolean" class="form-control" name="activo" required="true">
+                                    <input type="checkbox" class="form-check-input mt-0" name="activo" required="true">
                                 </div>
                             </div>
                             <div class="modal-footer">
