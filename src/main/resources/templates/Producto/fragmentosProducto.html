@@ -142,7 +142,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
         <section th:fragment="editarProducto">            
             <form method="POST"
-                  th:action="@{/upload}"
+                  th:action="@{/producto/guardar}"
                   th:object="${producto}"
                   class="was-validated">
                 <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
@@ -157,10 +157,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="idMarca" th:text="#{producto.idMarca}">ID Marca</label>
-                                            <input type="number" class="form-control" name="idMarca" th:value="${producto.idMarca}" required="true" >
-                                        </div>
-                                        <div class="form-group">
                                             <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
                                             <input type="text" class="form-control" name="nombre" th:value="${producto.nombre}" required="true">
                                         </div>
@@ -169,8 +165,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <input type="text" class="form-control" name="descripcion" th:value="${producto.descripcion}" required="true">
                                         </div>
                                         <div class="form-group">
-                                            <label for="imagen" th:text="#{producto.imagen}">Imagen</label>
-                                            <input type="file" class="form-control" name="imagen" th:value="${producto.imagen}">
+                                            <label for="imagen">Imagen</label>
+                                            <label type="file" class="form-control" name="imagen">[[${producto.imagen}]]</label>
                                         </div>
                                         <div class="form-group">
                                             <label for="precio" th:text="#{producto.precio}">Precio</label>
@@ -217,16 +213,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
         </section> 
         <section th:fragment="searchBar">
-            <div class="container d-flex justify-content-center col-md-5 mt-3">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </button>
+            <form th:action="@{/producto/busqueda}"
+                  th:object="${producto}"
+                  class="was-validated">
+                <div class="container d-flex justify-content-center col-md-5 mt-3">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar" name="busqueda">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
     </body>
 </html>

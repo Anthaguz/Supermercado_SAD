@@ -32,7 +32,7 @@ public class FilesController {
         return "/uploadtest";
     }
     
-    @PostMapping("/producto/{nombre}/{marca}/{descripcion}/{precio}/{existencias}/{activo}/upload")
+    @PostMapping("/producto/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("imagen") MultipartFile file) {
         String message = "";
         try {
