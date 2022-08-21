@@ -92,8 +92,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Producto</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
-                        <form th:action="@{/producto/guardar}" th:object="${producto}"
-                              method="POST" class="was-validated">
+                        <form th:action="@{/producto/upload}" th:object="${producto}"
+                              method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
@@ -116,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </div>
                                 <div class="form-group">
                                     <label for="imagen" th:text="#{producto.imagen}">Imagen</label>
-                                    <input type="text" class="form-control" name="imagen">
+                                    <input type="file" class="form-control" name="imagen">
                                 </div>
                                 <div class="form-group">
                                     <label for="precio" th:text="#{producto.precio}">Precio</label>
@@ -142,7 +142,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
         <section th:fragment="editarProducto">            
             <form method="POST"
-                  th:action="@{/producto/guardar}"
+                  th:action="@{/upload}"
                   th:object="${producto}"
                   class="was-validated">
                 <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
@@ -170,7 +170,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         </div>
                                         <div class="form-group">
                                             <label for="imagen" th:text="#{producto.imagen}">Imagen</label>
-                                            <input type="text" class="form-control" name="imagen" th:value="${producto.imagen}">
+                                            <input type="file" class="form-control" name="imagen" th:value="${producto.imagen}">
                                         </div>
                                         <div class="form-group">
                                             <label for="precio" th:text="#{producto.precio}">Precio</label>
