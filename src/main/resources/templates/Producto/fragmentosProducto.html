@@ -21,13 +21,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 data-bs-target="#agregarProducto">
                                 <i class="fas fa-plus"></i> [[#{accion.agregar}]]
                             </button>
+                                                        <a th:href="@{/producto/Inventario}" class="btn btn-primary">
+                                <i class="fas fa-file"></i>Reporte Inventario</a>
                         </div>
                     </div>
                 </div>
         </section>
         <section th:fragment="listaProductos" id="productos">
             <div class="container">
-                <div class="row">
+                <div class="row" style="overflow: auto; height: 550px">
                     <div class="col-md-15">
                         <div class="card">
                             <div class="card-header">

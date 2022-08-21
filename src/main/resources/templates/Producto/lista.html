@@ -3,22 +3,13 @@
     <head th:replace="layout/plantilla :: head">
         <title>Productos</title>
     </head>
-    <body>
+    <body style="height: 80%">
         <header th:replace="layout/plantilla :: header"/>
         <section th:replace="producto/fragmentosProducto :: botonesAgregar"/>
         <section th:replace="producto/fragmentosProducto :: searchBar"/>
         <section th:replace="producto/fragmentosProducto :: agregarProducto"/>
         <section th:replace="producto/fragmentosProducto :: listaProductos"/>
-        <section class="py-4 mb-4 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <a th:href="@{/producto/Inventario}" class="btn btn-primary">
-                            <i class="fas fa-file"></i>Reporte Inventario</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
-    <footer th:replace="layout/plantilla :: footer"/>
+    
 </html>
