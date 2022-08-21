@@ -1,7 +1,7 @@
 package com.SAD.controller;
 
 import com.SAD.domain.Producto;
-import com.SAD.service.FacturaReportService;
+import com.SAD.service.InventarioReportService;
 import com.SAD.service.MarcaService;
 import com.SAD.service.ProductoService;
 import java.io.File;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ProductoController {
 
     @Autowired
-    private FacturaReportService facturaReportService;
+    private InventarioReportService facturaReportService;
     @Autowired
     private ProductoService productoService;
     @Autowired
@@ -69,7 +69,7 @@ public class ProductoController {
         return "redirect:/producto/lista";
     }
 
-    @GetMapping(value = "/producto/Factura", produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = "/producto/Inventario", produces = MediaType.APPLICATION_PDF_VALUE)
     public @ResponseBody
     byte[] getFile() throws IOException {
         try {
