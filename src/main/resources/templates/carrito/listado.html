@@ -80,8 +80,8 @@
                                                     <p class="mb-2">[[${new java.text.DecimalFormat('#,##0.00').format(montoTotal + montoImpuestos)}]]</p>
                                                 </div>
 
-                                                <button type="button" class="btn btn-info btn-block btn-lg">
-                                                    <div class="d-flex justify-content-between">
+                                                <button type="button" class="btn btn-info btn-block btn-lg" th:href="@{/carrito/Factura}" target="_blank">
+                                                    <div class="d-flex justify-content-between" th:href="@{/carrito/Factura}" target="_blank" >
                                                         <span>[[${new java.text.DecimalFormat('#,##0.00').format(montoTotal + montoImpuestos)}]]</span> - 
                                                         <span> Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                                     </div>
@@ -104,7 +104,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:ref="@{/carrito/Factura}" class="btn btn-primary">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/carrito/Factura}" target="_blank" class="btn btn-primary">
                             <i class="fas fa-file"></i>Factura
                         </a>
                     </div>

@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,12 +39,18 @@ public class ProductoController {
         return "/producto/lista";
     }
 
-    /*@GetMapping("/producto/busqueda")
-    public String busqueda(Model model) {
+    @GetMapping("/producto/busqueda")
+    public String busqueda(String busqueda,Model model) {
         var productos = productoService.getProductos(true);
-        model.addAttribute("productos", productos);
+        List<Producto> resultado = new ArrayList<Producto>();
+        for (Producto item : productos){
+            if (item.getNombre().contains(busqueda)){
+                resultado.add(item);
+            }
+        }
+        model.addAttribute("productos", resultado);
         return "/producto/lista";
-    }*/
+    }
     @GetMapping("/producto/nuevo")
     public String nuevoProducto(Producto producto, Model model) {
         var marcas = marcaService.getMarcas();
