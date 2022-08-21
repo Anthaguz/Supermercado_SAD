@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head th:replace="layout/plantilla :: head">
-        <title>TechShop</title>
+        <title>Supermercado SAD</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
@@ -96,6 +96,17 @@
 
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:ref="@{/carrito/Factura}" class="btn btn-primary">
+                            <i class="fas fa-file"></i>Factura
+                        </a>
                     </div>
                 </div>
             </div>

@@ -6,12 +6,18 @@ import com.SAD.domain.CarritoDetalle;
 import com.SAD.domain.Producto;
 import com.SAD.domain.Usuario;
 import com.SAD.service.CarritoDetalleService;
+import com.SAD.service.CarritoReportService;
 import com.SAD.service.CarritoService;
 import com.SAD.service.ProductoService;
 import com.SAD.service.UsuarioService;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,23 +25,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CarritoController {
+
     @Autowired
     private UsuarioDao usuarioDao;
-    
+
     @Autowired
     private CarritoDetalleService carritoDetalleService;
 
     @Autowired
     private ProductoService productoService;
-    
+
     @Autowired
     private CarritoService carritoService;
-    
+
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private CarritoReportService carritoReportService;
 
     @GetMapping("/carrito/agregar/{idProducto}")
     public String agregar(Producto producto, HttpSession session) {
@@ -74,5 +85,23 @@ public class CarritoController {
         model.addAttribute("montoImpuestos", montoImpuestos);
         model.addAttribute("montoTotal", montoTotal);
         return "/carrito/listado";
+    }
+
+    @GetMapping(value = "/carrito/Factura", produces = MediaType.APPLICATION_PDF_VALUE)
+    public @ResponseBody
+    byte[] getFile() throws IOException {
+        try {
+            FileInputStream fis = new FileInputStream(new File(carritoReportService.generateReport()));
+            byte[] targetArray = new byte[fis.available()];
+            fis.read(targetArray);
+            return targetArray;
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 }
