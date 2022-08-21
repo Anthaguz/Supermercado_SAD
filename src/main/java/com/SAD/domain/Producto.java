@@ -1,8 +1,10 @@
 package com.SAD.domain;
 
+import java.io.File;
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Entity
@@ -19,7 +21,7 @@ public class Producto implements Serializable{
     @ManyToOne
     public Marca marca;
     
-    private String nombre;
+    public String nombre;
     private String descripcion;    
     private String imagen;    
     private double precio;
@@ -27,6 +29,17 @@ public class Producto implements Serializable{
     private boolean activo;
     @Transient
     private String id_marca;
+    @Transient
+    public MultipartFile file;
+
+    public Producto(Marca marca, String nombre, double precio, long existencias, boolean activo, MultipartFile file) {
+        this.marca = marca;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.existencias = existencias;
+        this.activo = activo;
+        this.file = file;
+    }
     
     public Producto(){
     }
@@ -59,6 +72,18 @@ public class Producto implements Serializable{
         this.existencias = existencias;
         this.activo = activo;
         this.id_marca = id_marca;
+        
+        
+    }
+
+    public Producto(String nombre, String descripcion, String imagen, double precio, long existencias, boolean activo, String id_marca) {
+        this.marca = marca;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.existencias = existencias;
+        this.activo = activo;
     }
 
     public Producto(Marca marca, String nombre, String descripcion, String imagen, double precio, long existencias, boolean activo) {

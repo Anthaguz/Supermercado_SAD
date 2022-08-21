@@ -39,7 +39,13 @@ public class ProductoServiceImpl implements ProductoService{
     @Transactional
     public void save(Producto producto) {
         Marca tempMarca = marcaDao.findByNombre(producto.getId_marca());
-        Producto productoFinal = new Producto(tempMarca, producto.getNombre(), producto.getDescripcion(), producto.getImagen(), producto.getPrecio(), producto.getExistencias(), producto.isActivo());
+        Producto productoFinal = new Producto(tempMarca, 
+                                     producto.getNombre(), 
+                                     producto.getDescripcion(), 
+                                     producto.getImagen(), 
+                                     producto.getPrecio(), 
+                                     producto.getExistencias(), 
+                                     producto.isActivo());
         productoDao.save(productoFinal);
     }
 

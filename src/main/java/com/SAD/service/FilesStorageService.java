@@ -1,5 +1,6 @@
 package com.SAD.service;
 
+import com.SAD.domain.Producto;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 import org.springframework.core.io.Resource;
@@ -9,7 +10,7 @@ public interface FilesStorageService {
 
     public void init();
 
-    public void save(MultipartFile file);
+    public void save(Producto producto);
 
     public Resource load(String filename);
 

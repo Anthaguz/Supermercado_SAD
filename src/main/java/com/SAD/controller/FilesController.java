@@ -1,8 +1,11 @@
 package com.SAD.controller;
 
 import com.SAD.domain.FileInfo;
+import com.SAD.domain.Producto;
 import com.SAD.domain.ResponseMessage;
 import com.SAD.service.FilesStorageService;
+import com.SAD.service.ProductoService;
+import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,8 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 @Controller
 @CrossOrigin("http://localhost:8081")
 public class FilesController {
-
+    @Autowired
+    ProductoService productoService;
     @Autowired
     FilesStorageService storageService;
     
@@ -33,16 +37,13 @@ public class FilesController {
     }
     
     @PostMapping("/producto/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("imagen") MultipartFile file) {
-        String message = "";
-        try {
-            storageService.save(file);
-            message = "Uploaded the file successfully: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-        } catch (Exception e) {
-            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-        }
+    public String uploadFile(Producto producto) {
+//        try {
+            storageService.save(producto);
+            String location="\\imagenes\\uploads\\" + producto.nombre+".jpg";
+            producto.setImagen(location);
+            productoService.save(producto);
+            return "redirect:/producto/lista";
     }
 
     @GetMapping("/files")
