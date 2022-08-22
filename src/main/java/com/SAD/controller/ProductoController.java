@@ -51,6 +51,7 @@ public class ProductoController {
         model.addAttribute("productos", resultado);
         return "/producto/lista";
     }
+    
     @GetMapping("/producto/nuevo")
     public String nuevoProducto(Producto producto, Model model) {
         var marcas = marcaService.getMarcas();

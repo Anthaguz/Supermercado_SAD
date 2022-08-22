@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layout/plantilla :: head">
+        <title>Productos</title>
+    </head>
+    <body style="height: 80%">
+        <header th:replace="layout/plantilla :: header"/>
+        <section th:replace="producto/fragmentosProducto :: botonesAgregar"/>
+        <section th:replace="producto/fragmentosProducto :: searchBar"/>
+        <section th:replace="producto/fragmentosProducto :: agregarProducto"/>
+        <section th:replace="producto/fragmentosProducto :: listaProductos"/>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+    
+</html>
