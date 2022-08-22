@@ -47,7 +47,7 @@
                                                         <div style="width: 80px;">
                                                             <h5 class="mb-0">[[${item.precio}]]</h5>
                                                         </div>
-                                                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                        <a th:href="@{/detalle/eliminar/}+${item.idDetalle}" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

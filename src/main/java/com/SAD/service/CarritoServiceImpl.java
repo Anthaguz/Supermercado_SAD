@@ -25,5 +25,8 @@ public class CarritoServiceImpl implements CarritoService {
         }
         return carrito;
     }
-
+    @Override
+    public void delete(Carrito carrito) {
+        carritoDao.delete(carrito);
+    }
 }

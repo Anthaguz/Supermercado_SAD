@@ -104,4 +104,10 @@ public class CarritoController {
         }
         return null;
     }
+
+    @GetMapping("/detalle/eliminar/{idDetalle}")
+    public String eliminarDetalle(CarritoDetalle carritoDetalle) {
+        carritoDetalleService.delete(carritoDetalle);
+        return "redirect:/carrito/listado";
+    }
 }
