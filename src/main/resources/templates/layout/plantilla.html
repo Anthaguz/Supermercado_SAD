@@ -43,8 +43,9 @@
                                 <a class="nav-menu-link nav-link text-white" th:href="@{/producto/lista}"
                                    th:text="#{plantilla.inventario}">Inventario</a>
                             </li>
-                            <a class="nav-menu-link nav-link text-white" th:href="@{/marca/lista}"
-                               th:text="#{plantilla.marcas}">Marcas</a>
+                            <li>
+                                <a class="nav-menu-link nav-link text-white" th:href="@{/marca/lista}"
+                                   th:text="#{plantilla.marcas}">Marcas</a>
                             </li>
                         </ul>
                         <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto text-white">

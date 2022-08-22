@@ -13,4 +13,5 @@ public interface CarritoDetalleDao extends CrudRepository<CarritoDetalle, Long> 
     public List<CarritoDetalle> findByIdCarrito(Long idCarrito);
     
     public void deleteByIdCarrito(Long idCarrito);
+    
 }

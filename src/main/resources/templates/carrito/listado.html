@@ -59,7 +59,7 @@
                                             <div class="card-body">
                                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                                     <h5 class="mb-0">[[#{carrito.resumen}]]</h5>
-                                                   
+
                                                 </div>                                      
 
                                                 <hr class="my-4">
@@ -81,7 +81,7 @@
 
                                                 <div class="d-flex justify-content-between" th:href="@{/carrito/Factura}" target="_blank" >
                                                     <span>[[${new java.text.DecimalFormat('#,##0.00').format(montoTotal + montoImpuestos)}]]</span> - 
-                                                    <span><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/carrito/Factura}" target="_blank" class="btn btn-primary">Checkout<i class="fas fa-long-arrow-alt-right ms-2"></i> </a> </span>
+                                                    <span><a th:href="@{/carrito/Factura}" target="_blank" class="btn btn-primary">Checkout<i class="fas fa-long-arrow-alt-right ms-2"></i> </a> </span>
                                                 </div>
                                                 </button>
 

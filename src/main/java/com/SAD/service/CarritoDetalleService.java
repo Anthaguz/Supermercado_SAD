@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.SAD.service;
 
+import com.SAD.domain.Carrito;
 import com.SAD.domain.Producto;
 import com.SAD.domain.CarritoDetalle;
 import java.util.List;
@@ -14,4 +11,5 @@ public interface CarritoDetalleService {
     public void save(CarritoDetalle carritoDetalle);
     public void delete(CarritoDetalle carritoDetalle);
     public void deleteAll(Long idCarrito);
+    public void deleteByProducto(Producto producto);
 }

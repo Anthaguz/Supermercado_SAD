@@ -1,6 +1,7 @@
 package com.SAD.controller;
 
 import com.SAD.domain.Producto;
+import com.SAD.service.CarritoDetalleService;
 import com.SAD.service.InventarioReportService;
 import com.SAD.service.MarcaService;
 import com.SAD.service.ProductoService;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +31,8 @@ public class ProductoController {
     private ProductoService productoService;
     @Autowired
     private MarcaService marcaService;
+    @Autowired
+    private CarritoDetalleService carritoDetalleService;
 
     @GetMapping("/producto/lista")
     public String inicio(Model model) {
@@ -40,18 +44,18 @@ public class ProductoController {
     }
 
     @GetMapping("/producto/busqueda")
-    public String busqueda(String busqueda,Model model) {
+    public String busqueda(String busqueda, Model model) {
         var productos = productoService.getProductos(true);
         List<Producto> resultado = new ArrayList<Producto>();
-        for (Producto item : productos){
-            if (item.getNombre().contains(busqueda)){
+        for (Producto item : productos) {
+            if (item.getNombre().contains(busqueda)) {
                 resultado.add(item);
             }
         }
         model.addAttribute("productos", resultado);
         return "/producto/lista";
     }
-    
+
     @GetMapping("/producto/nuevo")
     public String nuevoProducto(Producto producto, Model model) {
         var marcas = marcaService.getMarcas();
@@ -72,8 +76,10 @@ public class ProductoController {
         return "/producto/modificar";
     }
 
+    @Transactional
     @GetMapping("/producto/eliminar/{idProducto}")
     public String eliminarProducto(Producto producto) {
+        carritoDetalleService.deleteByProducto(producto);
         productoService.delete(producto);
         return "redirect:/producto/lista";
     }

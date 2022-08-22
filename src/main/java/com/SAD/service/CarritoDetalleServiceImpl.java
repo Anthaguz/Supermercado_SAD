@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.SAD.domain.CarritoDetalle;
 import com.SAD.domain.Producto;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,5 +37,13 @@ public class CarritoDetalleServiceImpl implements CarritoDetalleService {
     @Override
     public void deleteAll(Long idCarrito) {
         carritoDetalleDao.deleteByIdCarrito(idCarrito);
+    }
+    @Override
+    public void deleteByProducto(Producto producto){
+        List<CarritoDetalle> detalles =new ArrayList<CarritoDetalle>();
+        detalles=(List<CarritoDetalle>) carritoDetalleDao.findAll();
+        for (CarritoDetalle item:detalles){
+            carritoDetalleDao.deleteByIdCarrito(item.getIdCarrito());
+        }
     }
 }

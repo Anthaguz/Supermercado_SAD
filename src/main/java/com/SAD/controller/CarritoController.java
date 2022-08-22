@@ -89,7 +89,7 @@ public class CarritoController {
 
     @GetMapping(value = "/carrito/Factura", produces = MediaType.APPLICATION_PDF_VALUE)
     public @ResponseBody
-    byte[] getFile() throws IOException {
+    byte[] getFile(HttpSession session) throws IOException {
         try {
             FileInputStream fis = new FileInputStream(new File(carritoReportService.generateReport()));
             byte[] targetArray = new byte[fis.available()];
