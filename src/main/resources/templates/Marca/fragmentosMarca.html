@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layout/plantilla :: head">
+        <title>Supermercado SAD</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+                <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div id="contenido">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                            <button 
+                                type="button" 
+                                class="btn btn-primary btn-block" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#agregarProducto">
+                                <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section th:fragment="listaProductos" id="productos">
+            <div class="container">
+                <div class="row" style="overflow: auto; height: 550px">
+                    <div class="col-md-15">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{plantilla.marcas}]]</h4>
+                            </div>
+                            <div th:if="${marcas != null and !marcas.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th th:text="#{producto.nombre}">Nombre</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="marca : ${marcas}">
+                                            <td>[[${producto.nombre}]]</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/marca/nuevo}+${marca.idMarca}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${marcas == null or marcas.empty}">
+                                <span th:text="#{producto.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="agregarMarca">
+            <div id="agregarProducto" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/marca/upload}" th:object="${marca}"
+                              method="POST" class="was-validated" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="editarMarca">            
+            <form method="POST"
+                  th:action="@{/marca/guardar}"
+                  th:object="${producto}"
+                  class="was-validated">
+                <input type="hidden" name="idMarca" th:field="*{idMarca}"/>
+                <section th:replace="marca/fragmentosMarca :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{producto.nombre}">Nombre</label>
+                                            <input type="text" class="form-control" name="nombre" th:value="${producto.nombre}" required="true">
+                                        </div>                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a th:href="@{/producto/lista}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+</html>

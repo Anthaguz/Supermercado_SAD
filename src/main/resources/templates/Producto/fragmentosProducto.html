@@ -17,7 +17,7 @@
                                 data-bs-target="#agregarProducto">
                                 <i class="fas fa-plus"></i> [[#{accion.agregar}]]
                             </button>
-                                                        <a th:href="@{/producto/Inventario}" class="btn btn-primary">
+                            <a th:href="@{/producto/Inventario}" class="btn btn-primary">
                                 <i class="fas fa-file"></i>Reporte Inventario</a>
                         </div>
                     </div>
@@ -174,9 +174,10 @@
                                             <label for="existencias" th:text="#{producto.existencias}">Existencias</label>
                                             <input type="number" class="form-control" name="existencias" th:value="${producto.existencias}" required="true" step="any">
                                         </div>
+                                        <br>
                                         <div class="form-group">
                                             <label for="activo" th:text="#{producto.activo}">Activo</label>
-                                            <input type="boolean" class="form-control" name="activo" th:value="${producto.activo}" required="true">
+                                            <input type="checkbox" class="form-check-input mt-0" name="activo">
                                         </div>                    
                                     </div>
                                 </div>
