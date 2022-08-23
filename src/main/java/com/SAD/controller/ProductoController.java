@@ -65,6 +65,7 @@ public class ProductoController {
 
     @PostMapping("/producto/guardar")
     public String guardarProducto(Producto producto) {
+        producto.setMarca(marcaService.getMarcaById(Long.parseLong(producto.getId_marca())));
         productoService.save(producto);
         return "redirect:/producto/lista";
     }

@@ -23,6 +23,11 @@ public class MarcaServiceImpl implements MarcaService{
     public Marca getMarca(Marca marca) {
         return marcaDao.findById(marca.getIdMarca()).orElse(null);
     }
+    
+    @Override
+    public Marca getMarcaById(Long idMarca){
+        return marcaDao.findByIdMarca(idMarca);
+    }
 
     @Override
     @Transactional

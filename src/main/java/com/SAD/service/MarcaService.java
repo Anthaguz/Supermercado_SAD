@@ -11,4 +11,6 @@ public interface MarcaService {
     public void save(Marca cliente);
 
     public void delete(Marca cliente);
+    
+    public Marca getMarcaById(Long idMarca);
 }

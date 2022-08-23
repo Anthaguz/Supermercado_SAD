@@ -13,7 +13,7 @@
                 <div class="row row-cols-3" th:if="${productos != null and !productos.empty}">
                     <div class="card" th:each="producto : ${productos}" >
                         <div class="card-body">
-                            <img th:src="${producto.imagen}" class="card-img-top" alt="equipo" style="height: 150px; max-width:350px; min-width: 10%">
+                            <img th:src="${producto.imagen}" class="card-img-top" alt="equipo" style="height: 250px; max-width:250px; min-width: 10%">
                             <h5 class="card-title">[[${producto.nombre}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(producto.precio)}]]</h6>
                             <p>[[${producto.descripcion}]]</p>

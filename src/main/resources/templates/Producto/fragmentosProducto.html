@@ -144,6 +144,7 @@
                   th:object="${producto}"
                   class="was-validated">
                 <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <input type="hidden" name="idMarca" th:value="${producto.marca.idMarca}"/>
                 <section th:replace="producto/fragmentosProducto :: botonesEditar"/> 
                 <div id="details">
                     <div class="container">
